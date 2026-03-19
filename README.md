@@ -5,26 +5,26 @@ Pipeline for processing DLC tracking data, computing locomotion metrics, and fit
 
 | File | Description |
 |------|-------------|
-| `load_dlc.py` | Load `*filtered.csv` DLC outputs, drop likelihood columns, merge experiments, resample, assign condition labels |
-| `locomotion_metrics.py` | Centre-of-mass trajectories, deadbanded velocity, body curvature, tangent angles, quirkiness, tail-beat frequency & amplitude, omega (body rotation), SVD path complexity, windowed features (tortuosity, MSD slope, path complexity), RDQ state classification, house-expansion tail-beat metrics |
-| `feature_selection.py` | Assemble per-window feature table, CV filter, Spearman correlation filter, effect-size diagnostics, per-individual robust normalisation, build analysis matrices for PCA/HMM |
-| `pca_analysis.py` | Feature coverage check, preprocessing (clip → log1p → robust z-score → StandardScaler), PCA fit on control animals, project all conditions, save coordinates & loadings |
-| `hmm.py` | BIC scan (control animals only), final Gaussian HMM fit (all animals), Viterbi decode, dwell smoothing, rare-state pruning, occupancy & transition tables, full ethograms, HE transient panels, chord diagrams |
+| `Loading_data.py` | Load `*filtered.csv` DLC outputs, drop likelihood columns, merge experiments, resample, assign condition labels |
+| `Locomotion_metrics.py` | Centre-of-mass trajectories, deadbanded velocity, body curvature, tangent angles, quirkiness, tail-beat frequency & amplitude, omega (body rotation), SVD path complexity, windowed features (tortuosity, MSD slope, path complexity), RDQ state classification, house-expansion tail-beat metrics |
+| `Feature_selection.py` | Assemble per-window feature table, CV filter, Spearman correlation filter, effect-size diagnostics, per-individual robust normalisation, build analysis matrices for PCA/HMM |
+| `PCA.py` | Feature coverage check, preprocessing (clip → log1p → robust z-score → StandardScaler), PCA fit on control animals, project all conditions, save coordinates & loadings |
+| `HMM.py` | BIC scan (control animals only), final Gaussian HMM fit (all animals), Viterbi decode, dwell smoothing, rare-state pruning, occupancy & transition tables, full ethograms, HE transient panels, chord diagrams |
 
 ## Pipeline
 
 ```
 DLC *filtered.csv
-  → load_dlc.py               →  x_final.csv, y_final.csv
-  → locomotion_metrics.py     →  wide_tables/  (velocity, curvature, tail-beat,
+  → Loading_data.py           →  x_final.csv, y_final.csv
+  → Locomotion_metrics.py     →  wide_tables/  (velocity, curvature, tail-beat,
                                   omega, SVD complexity, windowed metrics,
                                   RDQ state time-series, bout_summary,
                                   per_animal_feature_matrix)
-  → feature_selection.py      →  feature_selection/  (reports, recommended_features.txt)
+  → Feature_selection.py      →  feature_selection/  (reports, recommended_features.txt)
                                   matrices/  (normalised matrices, all/active windows)
-  → pca_analysis.py           →  pca/  (pca_coordinates_all.csv, pca_loadings.csv,
+  → PCA                       →  pca/  (pca_coordinates_all.csv, pca_loadings.csv,
                                   pca_summary_per_animal.csv, coverage_report.csv)
-  → hmm.py                    →  hmm/  (decoded windows, occupancy, transitions,
+  → HMM.py                    →  hmm/  (decoded windows, occupancy, transitions,
                                   state means, ethograms, chord diagrams)
 ```
 
