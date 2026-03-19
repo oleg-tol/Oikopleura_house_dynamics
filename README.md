@@ -32,20 +32,20 @@ DLC *filtered.csv
 
 | Parameter | Value | Location |
 |-----------|-------|----------|
-| FPS / resample rate | 30 fps / 1:5 → 6 Hz | `locomotion_metrics.py` |
-| Pixel to µm | 11.56 | `locomotion_metrics.py` |
-| Window / stride | 3 s / 1 s | `locomotion_metrics.py` |
-| Likelihood threshold | 0.99 | `locomotion_metrics.py` |
-| Deadband | 3 × MAD (hysteresis 1.2 / 0.8) | `locomotion_metrics.py` |
-| RDQ quiescence threshold | 50 µm/s | `locomotion_metrics.py` |
-| SVD embedding window | 9 frames (1.5 s) | `locomotion_metrics.py` |
-| CV filter / Spearman threshold | 0.05 / 0.70 | `feature_selection.py` |
-| Normalisation | per-individual robust z-score (median/IQR) + StandardScaler on control | `feature_selection.py`, `pca_analysis.py` |
-| PCA fit condition | control only, projected to all | `pca_analysis.py` |
-| HMM K (BIC scan) | 2–10, pick elbow | `hmm.py` |
-| HMM covariance / min_covar | full / 0.01 | `hmm.py` |
-| Dwell smoothing | median filter 3 windows | `hmm.py` |
-| HE transient context | ±60 s | `hmm.py` |
+| FPS / resample rate | 30 fps / 1:5 → 6 Hz | `Locomotion_metrics.py` |
+| Pixel to µm | 11.56 | `Locomotion_metrics.py` |
+| Window / stride | 3 s / 1 s | `Locomotion_metrics.py` |
+| Likelihood threshold | 0.99 | `Locomotion_metrics.py` |
+| Deadband | 3 × MAD (hysteresis 1.2 / 0.8) | `Locomotion_metrics.py` |
+| RDQ quiescence threshold | 50 µm/s | `Locomotion_metrics.py` |
+| SVD embedding window | 9 frames (1.5 s) | `Locomotion_metrics.py` |
+| CV filter / Spearman threshold | 0.05 / 0.70 | `Feature_selection.py` |
+| Normalisation | per-individual robust z-score (median/IQR) + StandardScaler on control | `Feature_selection.py`, `PCA.py` |
+| PCA fit condition | control only, projected to all | `PCA.py` |
+| HMM K (BIC scan) | 2–10, pick elbow | `HMM.py` |
+| HMM covariance / min_covar | full / 0.01 | `HMM.py` |
+| Dwell smoothing | median filter 3 windows | `HMM.py` |
+| HE transient context | ±60 s | `HMM.py` |
 
 ## Requirements
 
